@@ -6,7 +6,7 @@ A docker with jupyter notbook to be loaded on jupyterhub via docker-spawner.
 
 On JupyterHub server
 ```
-scatenag/ocaml-jupyterhub-dockerspawner:latest
+docker pull scatenag/ocaml-jupyterhub-dockerspawner:latest
 ```
 
 In `jupyterhub_config.py` 
