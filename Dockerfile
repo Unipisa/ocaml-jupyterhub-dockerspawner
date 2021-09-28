@@ -1,7 +1,4 @@
 
-##########################################################################
-#                     Start using an existing image
-##########################################################################
 FROM jupyterhub/singleuser
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -13,11 +10,9 @@ RUN apt-get install --yes apt-file
 
 RUN apt-file update
 
-RUN DEBIAN_FRONTEND="noninteractive" sudo apt-get --yes install vim
-RUN DEBIAN_FRONTEND="noninteractive" sudo apt-get --yes install nano
-RUN DEBIAN_FRONTEND="noninteractive" sudo apt-get --yes install wget
+RUN DEBIAN_FRONTEND="noninteractive" sudo apt-get --yes install vim nano
+RUN DEBIAN_FRONTEND="noninteractive" sudo apt-get --yes install wget curl
 RUN DEBIAN_FRONTEND="noninteractive" sudo apt-get --yes install iputils-ping
-RUN DEBIAN_FRONTEND="noninteractive" sudo apt-get --yes install curl
 RUN DEBIAN_FRONTEND="noninteractive" sudo apt-get --yes install git
 
 ENV CONDA_DIR /opt/miniconda3
@@ -30,7 +25,7 @@ RUN ${CONDA_DIR}/bin/conda install --yes -c conda-forge gosu tini
 
 
 ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ=Europe/Moscow
+ENV TZ=Europe/Rome
 RUN DEBIAN_FRONTEND="noninteractive" TZ="Europe/Moscow"  sudo -E apt-get install -y tzdata
 RUN DEBIAN_FRONTEND="noninteractive" sudo -E apt-get --yes install python3-pip ocaml opam libgmp-dev pkg-config libzmq3-dev vim
 RUN pip3 install notebook
