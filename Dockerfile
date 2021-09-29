@@ -18,6 +18,7 @@ RUN jupyter contrib nbextensions install --system
 COPY git-pull /etc/cron.d/git-pull
 RUN chmod 0644 /etc/cron.d/git-pull && crontab /etc/cron.d/git-pull
 RUN crontab /etc/cron.d/git-pull
+RUN sed -i 's+. /usr/local/bin/start.sh+cron &&. /usr/local/bin/start.sh+g' /usr/local/bin/start-notebook.sh
 
 USER jovyan
 RUN opam init --disable-sandboxing
