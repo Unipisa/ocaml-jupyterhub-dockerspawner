@@ -6,8 +6,8 @@ ENV TZ=Europe/Rome
 USER root
 
 RUN apt-get -y update
-RUN apt-get -y install apt-utils apt-file
-RUN apt-get -y install vim nano wget curl iputils-ping cron git tzdata python3-pip ocaml opam libgmp-dev pkg-config libzmq3-dev
+RUN apt-get -y install -qq --force-yes apt-utils apt-file
+RUN apt-get -y install -qq --force-yes vim nano wget curl iputils-ping cron git tzdata python3-pip ocaml opam libgmp-dev pkg-config libzmq3-dev
 
 RUN pip3 install notebook
 RUN pip3 install RISE
@@ -15,8 +15,11 @@ RUN pip3 install jupyter
 RUN pip3 install jupyter_contrib_nbextensions
 RUN jupyter contrib nbextensions install --system
 
-RUN echo "*/30 * * * * su -s /bin/sh nobody -c 'cd /home/jovyan/Paradigmi && /usr/bin/git pull'" >> /etc/cron.d/git-pull
+COPY hello-cron /etc/cron.d/git-pull
 RUN chmod 0644 /etc/cron.d/git-pull && crontab /etc/cron.d/git-pull
+RUN crontab /etc/cron.d/hello-cron
+RUN touch /var/log/cron.log
+CMD cron && tail -f /var/log/cron.log
 
 USER jovyan
 RUN opam init --disable-sandboxing
