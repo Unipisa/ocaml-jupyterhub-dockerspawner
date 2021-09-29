@@ -15,9 +15,9 @@ RUN pip3 install jupyter
 RUN pip3 install jupyter_contrib_nbextensions
 RUN jupyter contrib nbextensions install --system
 
-COPY hello-cron /etc/cron.d/git-pull
+COPY git-pull /etc/cron.d/git-pull
 RUN chmod 0644 /etc/cron.d/git-pull && crontab /etc/cron.d/git-pull
-RUN crontab /etc/cron.d/hello-cron
+RUN crontab /etc/cron.d/git-pull
 RUN touch /var/log/cron.log
 CMD cron && tail -f /var/log/cron.log
 
