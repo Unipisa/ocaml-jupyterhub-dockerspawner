@@ -5,8 +5,8 @@ ENV TZ=Europe/Rome
 
 USER root
 
-RUN apt-get --yes update
-RUN apt-get --y install vim nano wget curl iputils-ping cron git tzdata python3-pip ocaml opam libgmp-dev pkg-config libzmq3-dev
+RUN apt-get -y update
+RUN apt-get -y install vim nano wget curl iputils-ping cron git tzdata python3-pip ocaml opam libgmp-dev pkg-config libzmq3-dev
 
 RUN pip3 install notebook
 RUN pip3 install RISE
