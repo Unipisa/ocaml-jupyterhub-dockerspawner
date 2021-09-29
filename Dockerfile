@@ -19,7 +19,7 @@ COPY git-pull /etc/cron.d/git-pull
 RUN chmod 0644 /etc/cron.d/git-pull && crontab /etc/cron.d/git-pull
 RUN crontab /etc/cron.d/git-pull
 RUN touch /var/log/cron.log
-CMD cron && tail -f /var/log/cron.log
+RUN cron && tail -f /var/log/cron.log
 
 USER jovyan
 RUN opam init --disable-sandboxing
