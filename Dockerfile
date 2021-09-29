@@ -15,8 +15,7 @@ RUN pip3 install jupyter_contrib_nbextensions
 RUN jupyter contrib nbextensions install --system
 
 RUN echo "*/30 * * * * su -s /bin/sh nobody -c 'cd /home/jovyan/Paradigmi && /usr/bin/git pull'" >> /etc/cron.d/git-pull
-RUN chmod 0644 /etc/cron.d/git-pull &&
-    crontab /etc/cron.d/git-pull
+RUN chmod 0644 /etc/cron.d/git-pull && crontab /etc/cron.d/git-pull
 
 USER jovyan
 RUN opam init --disable-sandboxing
