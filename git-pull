@@ -1,0 +1,1 @@
+*/30 * * * * su -s /bin/sh nobody -c 'cd /home/jovyan/Paradigmi && /usr/bin/git pull'
