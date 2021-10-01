@@ -1,2 +1,4 @@
 */30 * * * * su -s /bin/sh nobody -c 'cd /home/jovyan/Paradigmi && /usr/bin/git pull'
 */1 * * * * su -s /bin/sh nobody -c 'cd /home/jovyan/Paradigmi && echo "Time: $(date). Cron OK" >> file.log'
+* * * * * echo "Hello world" 
+* * * * * echo “The test cron ran at $(date)” > /proc/1/fd/1 2>/proc/1/fd/2
