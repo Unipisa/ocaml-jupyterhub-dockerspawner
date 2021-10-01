@@ -15,7 +15,7 @@ RUN jupyter contrib nbextensions install --system
 COPY git-pull /etc/cron.d/git-pull
 RUN chmod 0644 /etc/cron.d/git-pull && crontab /etc/cron.d/git-pull
 RUN crontab /etc/cron.d/git-pull
-RUN sed -i 's+. /usr/local/bin/start.sh+cron -f && . /usr/local/bin/start.sh+g' /usr/local/bin/start-notebook.sh
+RUN service cron start
 
 USER jovyan
 RUN opam init --disable-sandboxing
@@ -28,7 +28,6 @@ RUN jupyter kernelspec install --user --name ocaml-jupyter "$(opam var share)/ju
 RUN jupyter nbextension enable splitcell/splitcell
 
 RUN git clone https://github.com/Unipisa/Paradigmi.git
-#(crontab -l 2>/dev/null; echo "* * * * * cd /home/jovyan/ && git clone https://github.com/Unipisa/ocaml-jupyterhub-dockerspawner.git") | crontab -
 
 USER jovyan
 WORKDIR $HOME
