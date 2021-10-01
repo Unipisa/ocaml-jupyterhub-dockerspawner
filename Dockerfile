@@ -12,10 +12,12 @@ RUN apt-get -y install -qq --force-yes vim nano wget curl iputils-ping cron git 
 RUN pip3 install notebook RISE jupyter jupyter_contrib_nbextensions
 RUN jupyter contrib nbextensions install --system
 
+RUN touch /var/log/cron.log
 COPY git-pull /etc/cron.d/git-pull
 RUN chmod 0644 /etc/cron.d/git-pull && crontab /etc/cron.d/git-pull
 RUN crontab /etc/cron.d/git-pull
 RUN service cron start
+RUN sed -i 's+. /usr/local/bin/start.sh+cron && . /usr/local/bin/start.sh+g' /usr/local/bin/start-notebook.sh
 
 USER jovyan
 RUN opam init --disable-sandboxing
