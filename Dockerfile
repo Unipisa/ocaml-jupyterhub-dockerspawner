@@ -7,7 +7,7 @@ USER root
 
 RUN apt-get -y update
 RUN apt-get -y install -qq --force-yes apt-utils apt-file
-RUN apt-get -y install -qq --force-yes vim nano wget curl iputils-ping cron git tzdata python3-pip ocaml opam libgmp-dev pkg-config libzmq3-dev
+RUN apt-get -y install -qq --force-yes vim nano wget curl iputils-ping cron git tzdata python3-pip ocaml opam libgmp-dev pkg-config libzmq3-dev supervisor
 
 RUN pip3 install notebook RISE jupyter jupyter_contrib_nbextensions
 RUN jupyter contrib nbextensions install --system
@@ -16,8 +16,7 @@ RUN touch /var/log/cron.log
 COPY git-pull /etc/cron.d/git-pull
 RUN chmod 0644 /etc/cron.d/git-pull && crontab /etc/cron.d/git-pull
 CMD crontab /etc/cron.d/git-pull
-RUN service cron start
-RUN sed -i 's+. /usr/local/bin/start.sh+cron && . /usr/local/bin/start.sh+g' /usr/local/bin/start-notebook.sh
+COPY supervisord.conf /etc/supervisor/supervisord.conf
 
 USER jovyan
 RUN opam init --disable-sandboxing
