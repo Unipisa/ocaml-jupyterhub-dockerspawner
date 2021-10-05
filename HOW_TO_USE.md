@@ -1,5 +1,4 @@
 # How to use OCaml on JupyterHub@Unipi
-
 - [How to use OCaml on JupyterHub@Unipi](#how-to-use-ocaml-on-jupyterhubunipi)
         - [Connect to the server](#connect-to-the-server)
         - [Login with you credential](#login-with-you-credential)
@@ -7,7 +6,6 @@
         - [Notebook Folders and Launcher](#notebook-folders-and-launcher)
         - [Use the Jupyter Notebook interface](#use-the-jupyter-notebook-interface)
         - [Disclaimer](#disclaimer)
-
 ##### Connect to the server
 
 Go to <https://jupyterhub.polo2.sid.unipi.it:8000/>
