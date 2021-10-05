@@ -21,7 +21,5 @@ RUN eval $(opam env) && ocaml-jupyter-opam-genspec
 RUN jupyter kernelspec install --user --name ocaml-jupyter "$(opam var share)/jupyter"
 RUN jupyter nbextension enable splitcell/splitcell
 
-RUN git clone https://github.com/Unipisa/Paradigmi.git
-
 USER jovyan
 WORKDIR $HOME
