@@ -21,7 +21,5 @@ c.DockerSpawner.image_whitelist = {
 
 - [x] First working version
 - [x] Push to DockerHub via GitHub Actions ([docker-image.yml](.github/workflows/docker-image.yml))
-- [ ] Make git cloned repository parametric (instead of fixed to [Paradigmi](https://github.com/Unipisa/Paradigmi)]
-- [ ] Git clone on load or mount directly GitHub repo
 - [ ] Add more library (as [docker-ocaml-jupyter-datascience](https://github.com/akabe/docker-ocaml-jupyter-datascience))
 - [ ] ... 
