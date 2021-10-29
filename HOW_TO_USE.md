@@ -8,7 +8,7 @@
       - [Disclaimer](#disclaimer)
 #### Connect to the server
 
-Go to <https://jupyterhub.polo2.sid.unipi.it:8000/>
+Go to <https://jupyterhub.polo2.sid.unipi.it:8000/> or <https://jupyterhubfm.df.unipi.it:8000/>
 
 ![connect to the server](etc/pic/0.png)
 
