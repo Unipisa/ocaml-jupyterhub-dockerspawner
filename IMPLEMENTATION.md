@@ -30,5 +30,5 @@ c.DockerSpawner.volumes = { '{prefix}-{username}-paradigmi-{servername}':'/home/
 Cron `crontab -e`
 
 ```bash
-*/15 * * * * su -s /bin/sh nobody -c 'cd /jup_data/Paradigmi && /usr/bin/git pull'
+*/15 * * * * su -s /bin/sh nobody -c 'cd /jup_data/Paradigmi && /usr/bin/git stash && /usr/bin/git pull'
 ```
